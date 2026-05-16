@@ -1,3 +1,22 @@
+from flask import Flask
+from threading import Thread
+import os
+
+app = Flask(name)
+
+@app.route("/")
+def home():
+    return "✅ Bot is running!"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    print("🚀 Bot is running...")
+    app.run(host="0.0.0.0", port=port)
+
+def keep_alive():
+    t = Thread(target=run_flask)
+    t.start()
+
 # gcl_bot.py
 # Requirements:
 #   python-telegram-bot==20.6
